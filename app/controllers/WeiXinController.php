@@ -7,7 +7,8 @@ class WeiXinController extends \BaseController {
 	const APPID='wx60a440035b3f92a4';
 
 	public function index(){
-		if (!isset($_GET['echostr'])) {
+        $echostr=Input::get('echostr');
+		if (!isset($echostr)) {
 			$this->responseMsg();
 		}else{
 			$this->valid();
