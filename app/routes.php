@@ -11,7 +11,4 @@
 |
 */
 
-Route::get('/', function()
-{
-	return View::make('hello');
-});
+Route::any('/weixin', ['as'=>'weixin','uses'=>'WeiXinController@index']);
