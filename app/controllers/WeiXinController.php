@@ -2,7 +2,7 @@
 
 class WeiXinController extends \BaseController {
 
-	const TOKEN="weixin";
+	const TOKEN="test_weixin";
 	const APPSCRET="dabd90109fb83b901b4a8619216f35c0";
 	const APPID='wx60a440035b3f92a4';
 
