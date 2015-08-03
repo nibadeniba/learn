@@ -16,7 +16,7 @@ class WeiXinController extends \BaseController {
 	}
 
 	public function get_access_token(){
-		$access_token=file_get_contents('https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid='.APPID.'&secret='.APPSCRET);
+		$access_token=file_get_contents('https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid='.self::APPID.'&secret='.self::APPSCRET);
 		$access_token=json_decode($access_token,true)['access_token'];
 		return $access_token;
 	}
@@ -27,7 +27,7 @@ class WeiXinController extends \BaseController {
         $signature = $_GET["signature"];
         $timestamp = $_GET["timestamp"];
         $nonce = $_GET["nonce"];
-        $token = TOKEN;
+        $token = self::TOKEN;
         $tmpArr = array($token, $timestamp, $nonce);
         sort($tmpArr);
         $tmpStr = implode($tmpArr);
