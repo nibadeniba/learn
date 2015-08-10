@@ -2,9 +2,9 @@
 
 class WeiXinController extends \BaseController {
 
-	const TOKEN="test_weixin";
-	const APPSCRET="dabd90109fb83b901b4a8619216f35c0";
-	const APPID='wx60a440035b3f92a4';
+	public $token="test_weixin";
+	public $appscret="dabd90109fb83b901b4a8619216f35c0";
+	public $appid='wx60a440035b3f92a4';
 
 	public function index(){
         $echostr=Input::get('echostr');
@@ -27,7 +27,7 @@ class WeiXinController extends \BaseController {
         $signature = $_GET["signature"];
         $timestamp = $_GET["timestamp"];
         $nonce = $_GET["nonce"];
-        $token = self::TOKEN;
+        $token = self::$token;
         $tmpArr = array($token, $timestamp, $nonce);
         sort($tmpArr);
         $tmpStr = implode($tmpArr);
@@ -57,8 +57,8 @@ class WeiXinController extends \BaseController {
     private function receiveText($object){
         $keyword = trim($object->Content);
         //自动回复模式
-        //$content = "这是个文本消息,你之前输入的是： ".$keyword;
-        $content='<a href="https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx60a440035b3f92a4&redirect_uri=http://nibadeniba.sinaapp.com/oauth2.php&response_type=code&scope=snsapi_userinfo&state=1#wechat_redirect">点击这里体验</a>';
+        $content = "这是个文本消息,你之前输入的是： ".$keyword;
+        //$content='<a href="https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx60a440035b3f92a4&redirect_uri=http://nibadeniba.sinaapp.com/oauth2.php&response_type=code&scope=snsapi_userinfo&state=1#wechat_redirect">点击这里体验</a>';
         //$content=JSAPI_TICKET;
         //$content='<a href="http://meng3test.sinaapp.com/sample.php?appscret='.APPSCRET.'&appid='.APPID.'">'.点击.'</a>';
         $result = $this->transmitText($object, $content);
