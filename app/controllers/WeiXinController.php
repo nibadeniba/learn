@@ -5,7 +5,6 @@ class WeiXinController extends \BaseController {
 	const TOKEN = 'test_weixin';
 
 	public function index(){
-        dd(TOKEN);
         $echostr=Input::get('echostr');
 		if (!isset($echostr)) {
 			$this->responseMsg();
