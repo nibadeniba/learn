@@ -1,5 +1,7 @@
 <?php
 
+define("TOKEN", "test_weixin");
+
 class WeiXinController extends \BaseController {
 
 	public $token="test_weixin";
@@ -7,6 +9,7 @@ class WeiXinController extends \BaseController {
 	public $appid='wx60a440035b3f92a4';
 
 	public function index(){
+        echo 'hello';
         $echostr=Input::get('echostr');
 		if (!isset($echostr)) {
 			$this->responseMsg();
@@ -27,13 +30,15 @@ class WeiXinController extends \BaseController {
         $signature = $_GET["signature"];
         $timestamp = $_GET["timestamp"];
         $nonce = $_GET["nonce"];
+        $token = TOKEN;
         $tmpArr = array($token, $timestamp, $nonce);
-        sort($tmpArr);
+        sort($tmpArr,SORT_STRING);
         $tmpStr = implode($tmpArr);
         $tmpStr = sha1($tmpStr);
         if($tmpStr == $signature){
-            echo $echoStr;
-            exit;
+            return true;
+        }else{
+            return false;
         }
     }
 
