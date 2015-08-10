@@ -36,7 +36,7 @@ class WeiXinController extends \BaseController {
             return false;
         }
     }
-
+/*
     //响应消息
     public function responseMsg(){
         $postStr = $GLOBALS["HTTP_RAW_POST_DATA"];
@@ -75,4 +75,5 @@ class WeiXinController extends \BaseController {
         $result = sprintf($xmlTpl, $object->FromUserName, $object->ToUserName, time(), $content);
         return $result;
     }
+    */
 }
