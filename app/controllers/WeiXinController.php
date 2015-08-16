@@ -2,9 +2,8 @@
 
 class WeiXinController extends \BaseController {
 
-	const TOKEN = 'test_weixin';
-
 	public function index(){
+        dd(self::TOKEN);
         $echostr=Input::get('echostr');
 		if (!isset($echostr)) {
 			$this->responseMsg();
@@ -36,7 +35,7 @@ class WeiXinController extends \BaseController {
             return false;
         }
     }
-/*
+
     //响应消息
     public function responseMsg(){
         $postStr = $GLOBALS["HTTP_RAW_POST_DATA"];
@@ -75,5 +74,4 @@ class WeiXinController extends \BaseController {
         $result = sprintf($xmlTpl, $object->FromUserName, $object->ToUserName, time(), $content);
         return $result;
     }
-    */
 }
